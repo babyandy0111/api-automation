@@ -24,6 +24,7 @@ message Response {
   string accessToken = 3;
   int64 accessExpire = 4;
   int64 refreshAfter = 5;
+  string name = 6;
 }
 
 service User {

@@ -2,6 +2,7 @@ package logic
 
 import (
 	"context"
+	"go-micro-project/rpc/user/user"
 
 	"go-micro-project/api/user/internal/svc"
 	"go-micro-project/api/user/internal/types"
@@ -23,8 +24,22 @@ func NewUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) UserInfoL
 	}
 }
 
-func (l *UserInfoLogic) UserInfo(req types.UserinfoRequest) (*types.UserinfoResponse, error) {
-	// todo: add your logic here and delete this line
+func (l *UserInfoLogic) UserInfo(userid string) (*types.UserinfoResponse, error) {
 
-	return &types.UserinfoResponse{}, nil
+	resp, err := l.svcCtx.User.Userinfo(l.ctx, &user.UserinfoRequest{
+		Userid: userid,
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	response := types.UserReply{
+		Id:       resp.Id,
+		Email:    resp.Email,
+		Username: resp.Name,
+	}
+
+	return &types.UserinfoResponse{
+		UserReply: response,
+	}, nil
 }

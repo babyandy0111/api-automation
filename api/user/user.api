@@ -53,7 +53,12 @@ service user-api {
 	
 	@handler Register // 用户注册
 	post /users/register(RegisterRequest) returns(RegisterResponse)
-	
+}
+
+@server(
+	jwt: Auth
+)
+service user-api {
 	@handler UserInfo // 用户信息
-	post /users/userinfo(UserinfoRequest) returns(UserinfoResponse)
+	post /users/userinfo() returns(UserinfoResponse)
 }
