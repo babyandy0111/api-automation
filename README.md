@@ -8,6 +8,8 @@
 
 編輯 etc/user-api.yaml
 
+產生model ```goctl model mysql datasource -url="$datasource" -table="user" -c -dir .```
+
 編輯 internal/handler/*.go
 
 編輯主邏輯 internal/logic/*.go 
