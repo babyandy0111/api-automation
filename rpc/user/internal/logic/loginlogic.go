@@ -29,7 +29,7 @@ func NewLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) *LoginLogic 
 func (l *LoginLogic) Login(in *user.LoginRequest) (*user.Response, error) {
 	res, err := l.svcCtx.Model.FindOneByEmail(in.Email)
 	if err == nil {
-		passwords := utils.PasswordEncrypt("", in.Password)
+		passwords := utils.PasswordEncrypt(l.svcCtx.Config.Salt, in.Password)
 		if passwords == res.Password {
 			now := time.Now().Unix()
 			accessExpire := l.svcCtx.Config.AccessExpire
@@ -46,7 +46,7 @@ func (l *LoginLogic) Login(in *user.LoginRequest) (*user.Response, error) {
 			}
 			return &response, nil
 		} else {
-			return nil, errors.New("密码错误")
+			return nil, errors.New("密碼錯誤")
 		}
 
 	}
