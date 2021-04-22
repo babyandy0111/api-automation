@@ -19,4 +19,9 @@ go run xxx.go
 make build-all ENV=dev SERVICE_NAME=user
 
 
-curl http://localhost:8888/users/register -X POST -d '{"username": "andy","email": "andy@test.com","password": "123456"}' --header "Content-Type: application/json"
+#test
+```curl http://localhost:8888/users/register -X POST -d '{"username": "andy","email": "andy@test.com","password": "123456"}' --header "Content-Type: application/json"```
+
+```curl http://localhost:8888/users/login -X POST -d '{"email": "andy@test.com","password": "123456"}' --header "Content-Type: application/json"```
+
+```curl -i -X POST http://localhost:8888/users/userinfo -H 'authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTkxODkxNzksImlhdCI6MTYxOTEwMjc3OSwidXNlcklkIjoxfQ.xJQfuPkKy7qxdQEw1itRT6ZhzIjS5AHkUdHygk-phiQ' -H 'x-user-id:1'```
