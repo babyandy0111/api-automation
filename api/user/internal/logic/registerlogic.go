@@ -2,10 +2,10 @@ package logic
 
 import (
 	"context"
-	"go-micro-project/rpc/user/user"
+	"go-zero-demo/rpc/user/user"
 
-	"go-micro-project/api/user/internal/svc"
-	"go-micro-project/api/user/internal/types"
+	"go-zero-demo/api/user/internal/svc"
+	"go-zero-demo/api/user/internal/types"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )

@@ -1,12 +1,12 @@
 package handler
 
 import (
-	"go-micro-project/utils"
+	"go-zero-demo/utils"
 	"net/http"
 
 	"github.com/tal-tech/go-zero/rest/httpx"
-	"go-micro-project/api/user/internal/logic"
-	"go-micro-project/api/user/internal/svc"
+	"go-zero-demo/api/user/internal/logic"
+	"go-zero-demo/api/user/internal/svc"
 )
 
 func UserInfoHandler(ctx *svc.ServiceContext) http.HandlerFunc {

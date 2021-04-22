@@ -2,10 +2,10 @@ package logic
 
 import (
 	"context"
-	"go-micro-project/rpc/user/user"
+	"go-zero-demo/rpc/user/user"
 	"strconv"
 
-	"go-micro-project/rpc/user/internal/svc"
+	"go-zero-demo/rpc/user/internal/svc"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )

@@ -1,12 +1,12 @@
 package handler
 
 import (
-	"go-micro-project/utils"
+	"go-zero-demo/utils"
 	"net/http"
 
-	"go-micro-project/api/user/internal/logic"
-	"go-micro-project/api/user/internal/svc"
-	"go-micro-project/api/user/internal/types"
+	"go-zero-demo/api/user/internal/logic"
+	"go-zero-demo/api/user/internal/svc"
+	"go-zero-demo/api/user/internal/types"
 
 	"github.com/tal-tech/go-zero/rest/httpx"
 )

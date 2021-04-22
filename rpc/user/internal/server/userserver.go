@@ -6,9 +6,9 @@ package server
 import (
 	"context"
 
-	"go-micro-project/rpc/user/internal/logic"
-	"go-micro-project/rpc/user/internal/svc"
-	"go-micro-project/rpc/user/user"
+	"go-zero-demo/rpc/user/internal/logic"
+	"go-zero-demo/rpc/user/internal/svc"
+	"go-zero-demo/rpc/user/user"
 )
 
 type UserServer struct {

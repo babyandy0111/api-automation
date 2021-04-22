@@ -4,9 +4,9 @@ import (
 	"flag"
 	"fmt"
 
-	"go-micro-project/api/user/internal/config"
-	"go-micro-project/api/user/internal/handler"
-	"go-micro-project/api/user/internal/svc"
+	"go-zero-demo/api/user/internal/config"
+	"go-zero-demo/api/user/internal/handler"
+	"go-zero-demo/api/user/internal/svc"
 
 	"github.com/tal-tech/go-zero/core/conf"
 	"github.com/tal-tech/go-zero/rest"

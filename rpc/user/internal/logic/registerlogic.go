@@ -3,12 +3,12 @@ package logic
 import (
 	"context"
 	"errors"
-	model "go-micro-project/model/user"
-	"go-micro-project/utils"
+	model "go-zero-demo/model/user"
+	"go-zero-demo/utils"
 	"time"
 
-	"go-micro-project/rpc/user/internal/svc"
-	"go-micro-project/rpc/user/user"
+	"go-zero-demo/rpc/user/internal/svc"
+	"go-zero-demo/rpc/user/user"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )

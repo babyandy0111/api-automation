@@ -4,7 +4,7 @@ package handler
 import (
 	"net/http"
 
-	"go-micro-project/api/user/internal/svc"
+	"go-zero-demo/api/user/internal/svc"
 
 	"github.com/tal-tech/go-zero/rest"
 )

@@ -48,10 +48,16 @@ type JwtToken {
 }
 
 service user-api {
-	@handler Login    // 用户登录
+	@doc(
+		summary: "登入"
+	)
+	@handler Login
 	post /users/login(LoginRequest) returns(LoginResponse)
-	
-	@handler Register // 用户注册
+
+	@doc(
+		summary: "註冊"
+	)
+	@handler Register
 	post /users/register(RegisterRequest) returns(RegisterResponse)
 }
 
@@ -59,6 +65,9 @@ service user-api {
 	jwt: Auth
 )
 service user-api {
-	@handler UserInfo // 用户信息
+	@doc(
+		summary: "取使用者資料"
+	)
+	@handler UserInfo
 	post /users/userinfo() returns(UserinfoResponse)
 }

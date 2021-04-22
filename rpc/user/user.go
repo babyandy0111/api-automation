@@ -4,17 +4,17 @@ import (
 	"flag"
 	"fmt"
 
-	"go-micro-project/rpc/user/internal/config"
-	"go-micro-project/rpc/user/internal/server"
-	"go-micro-project/rpc/user/internal/svc"
-	"go-micro-project/rpc/user/user"
+	"go-zero-demo/rpc/user/internal/config"
+	"go-zero-demo/rpc/user/internal/server"
+	"go-zero-demo/rpc/user/internal/svc"
+	"go-zero-demo/rpc/user/user"
 
 	"github.com/tal-tech/go-zero/core/conf"
 	"github.com/tal-tech/go-zero/zrpc"
 	"google.golang.org/grpc"
 )
 
-var configFile = flag.String("f", "etc/user.yaml", "the config file")
+var configFile = flag.String("f", "etc/user-rpc.yaml", "the config file")
 
 func main() {
 	flag.Parse()
