@@ -20,10 +20,9 @@ build-rpc:
 build-all: build-api build-rpc
 
 dev:
-	GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero \
+	GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get github.com/tal-tech/go-zero \
+    && GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get github.com/tal-tech/go-zero/rest@v1.1.6 \
+    && go get github.com/tal-tech/go-zero/zrpc \
+    && GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get github.com/zeromicro/goctl-swagger \
     && go get -u github.com/golang/protobuf/protoc-gen-go@v1.3.2 \
-    && GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/goctl-swagger \
-    && go get google.golang.org/grpc@v1.29.1
-
-
-
+    && go get -u google.golang.org/grpc@v1.29.1 \

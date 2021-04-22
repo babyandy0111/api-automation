@@ -9,5 +9,5 @@ User:
     Key: user.rpc
 
 Auth:
-  AccessSecret: ad879037-d3fd-tghj-112d-6bfc35d54b7d
+  AccessSecret: "ad879037-d3fd-tghj-112d-6bfc35d54b7d"
   AccessExpire: 86400
