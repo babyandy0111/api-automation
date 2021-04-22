@@ -15,3 +15,5 @@
 編輯主邏輯 internal/logic/*.go 
 
 go run xxx.go
+
+make build-all ENV=dev SERVICE_NAME=user
