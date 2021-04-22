@@ -14,10 +14,10 @@ import (
 )
 
 type (
-	Response        = user.Response
 	LoginRequest    = user.LoginRequest
 	RegisterRequest = user.RegisterRequest
 	UserinfoRequest = user.UserinfoRequest
+	Response        = user.Response
 
 	User interface {
 		Login(ctx context.Context, in *LoginRequest) (*Response, error)
