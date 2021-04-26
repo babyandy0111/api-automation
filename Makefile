@@ -8,13 +8,13 @@ FILE:=$(ENV)-$(SERVICE_NAME)
 GOOS:=linux
 
 build-api:
-	env GOOS=$(GOOS) go build -ldflags="-s -w" -o $(API_ROOT_PATH)/bin/$(FILE)-api $(API_ROOT_PATH)/$(SERVICE_NAME).go \
+	env GOOS=$(GOOS) GO111MODULE=on go build -ldflags="-s -w" -o $(API_ROOT_PATH)/bin/$(FILE)-api -mod=vendor $(API_ROOT_PATH)/$(SERVICE_NAME).go \
     && mkdir -p $(API_ROOT_PATH)/doc \
     && goctl api plugin -plugin goctl-swagger="swagger -filename $(FILE).json" -api $(API_ROOT_PATH)/$(SERVICE_NAME).api -dir $(API_ROOT_PATH)/doc \
     && docker build -t $(ENV)-$(SERVICE_NAME)-api:v1 --build-arg ENV=$(ENV) --build-arg ROOT_PATH=$(API_ROOT_PATH) --build-arg SERVICE_TYPE=api --build-arg SERVICE_NAME=$(SERVICE_NAME) .
 
 build-rpc:
-	env GOOS=$(GOOS) go build -ldflags="-s -w" -o $(RPC_ROOT_PATH)/bin/$(FILE)-rpc $(RPC_ROOT_PATH)/$(SERVICE_NAME).go \
+	env GOOS=$(GOOS) GO111MODULE=on go build -ldflags="-s -w" -o $(RPC_ROOT_PATH)/bin/$(FILE)-rpc -mod=vendor $(RPC_ROOT_PATH)/$(SERVICE_NAME).go \
     && docker build -t $(ENV)-$(SERVICE_NAME)-rpc:v1 --build-arg ENV=$(ENV) --build-arg ROOT_PATH=$(RPC_ROOT_PATH) --build-arg SERVICE_TYPE=rpc --build-arg SERVICE_NAME=$(SERVICE_NAME) .
 
 build-all: build-api build-rpc
