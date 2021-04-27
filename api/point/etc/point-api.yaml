@@ -1,0 +1,13 @@
+Name: point-api
+Host: 0.0.0.0
+Port: 2222
+
+Point:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: point.rpc
+
+Auth:
+  AccessSecret: "ad879037-d3fd-tghj-112d-6bfc35d54b7d"
+  AccessExpire: 86400

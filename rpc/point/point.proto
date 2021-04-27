@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package point;
+
+message GetUserEarnRequest {
+  int64 UserId = 1;
+  int64 PointId = 2;
+}
+
+message GetUserEarnResponse {
+  int64 Id = 1;
+  int64 Point = 2;
+  string Description = 3;
+  string ExpiredAt = 4;
+  string CreatedAt = 5;
+}
+
+message GetUserUseRequest {
+  int64 UserId = 1;
+  int64 PointId = 2;
+}
+
+message GetUserUseResponse {
+  int64 Id = 1;
+  int64 Point = 2;
+  string Description = 3;
+  string CreatedAt = 4;
+}
+message GetUserPointRequest {
+  int64 UserID = 1;
+}
+message GetUserPointResponse {
+  int64 Point = 1;
+}
+
+service Point {
+  rpc UserEarn(GetUserEarnRequest) returns(GetUserEarnResponse);
+  rpc UserUse(GetUserUseRequest) returns(GetUserUseResponse);
+  rpc UserPoint(GetUserPointRequest) returns(GetUserPointResponse);
+}

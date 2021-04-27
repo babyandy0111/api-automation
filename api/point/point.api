@@ -1,0 +1,52 @@
+syntax = "v1"
+
+info(
+	title: "user point api"
+	desc: "取得user的point相關資訊"
+	author: "andy"
+	email: "babyandy0111@gmail.com"
+)
+
+type GetUserEarnRequest {
+	UserId  int64 `form:"user_id" validate:"required"`
+	PointId int64 `form:"point_id" validate:"omitempty"`
+}
+
+type GetUserEarnResponse {
+	Id          int64  `json:"id"`
+	Point       int64  `json:"point"`
+	Description string `json:"description"`
+	ExpiredAt   string `json:"expired_at"`
+	CreatedAt   string `json:"created_at"`
+}
+
+type GetUserUseRequest {
+	UserId  int64 `form:"user_id" validate:"required"`
+	PointId int64 `form:"point_id" validate:"omitempty"`
+}
+
+type GetUserUseResponse {
+	Id          int64  `json:"id"`
+	Point       int64  `json:"point"`
+	Description string `json:"description"`
+	CreatedAt   string `json:"created_at"`
+}
+
+type GetUserPointRequest {
+	UserId int64 `path:"user_id"`
+}
+
+type GetUserPointResponse {
+	Point int64 `json:"point"`
+}
+
+service point-api {
+	@handler GetUserEarn
+	get /points/earn (GetUserEarnRequest) returns (GetUserEarnResponse)
+	
+	@handler GetUserUse
+	get /points/use (GetUserUseRequest) returns (GetUserUseResponse)
+	
+	@handler GetUserPoint
+	get /users/:user_id/points (GetUserPointRequest) returns (GetUserPointResponse)
+}

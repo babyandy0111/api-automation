@@ -1,4 +1,4 @@
-.PHONY: build-api build-rpc clean doc build-all dev
+.PHONY: build-api build-rpc build-all create-rpc-temp create-api-temp create-all-temp
 
 ENV:=
 SERVICE_NAME:=
@@ -19,10 +19,21 @@ build-rpc:
 
 build-all: build-api build-rpc
 
-dev:
-	GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get github.com/tal-tech/go-zero \
-    && GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get github.com/tal-tech/go-zero/rest@v1.1.6 \
-    && go get github.com/tal-tech/go-zero/zrpc \
-    && GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get github.com/zeromicro/goctl-swagger \
-    && go get -u github.com/golang/protobuf/protoc-gen-go@v1.3.2 \
-    && go get -u google.golang.org/grpc@v1.29.1 \
+create-rpc-temp:
+	mkdir -p ./rpc/$(SERVICE_NAME) && cd ./rpc/$(SERVICE_NAME) \
+    && goctl rpc template -o=$(SERVICE_NAME).proto
+
+create-rpc-source:
+	cd ./rpc/$(SERVICE_NAME) \
+	&& goctl rpc proto -src=$(SERVICE_NAME).proto -dir=.
+
+create-api-temp:
+	mkdir -p ./api/$(SERVICE_NAME) && cd ./api/$(SERVICE_NAME) \
+    && goctl api -o $(SERVICE_NAME).api
+
+create-api-source:
+	cd ./api/$(SERVICE_NAME) \
+	&& goctl api go -api $(SERVICE_NAME).api -dir .
+
+create-all-temp: create-rpc-temp create-api-temp
+create-all-source: create-rpc-source create-api-source
