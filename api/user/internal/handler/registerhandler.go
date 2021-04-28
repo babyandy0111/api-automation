@@ -23,11 +23,9 @@ func RegisterHandler(ctx *svc.ServiceContext) http.HandlerFunc {
 		l := logic.NewRegisterLogic(r.Context(), ctx)
 		resp, err := l.Register(req)
 		if err != nil {
-			// httpx.Error(w, err)
-			httpx.OkJson(w, utils.FailureResponse(nil, err.Error(), 1000))
+			utils.ParamErrorResult(r, w, err)
 		} else {
-			// httpx.OkJson(w, resp)
-			httpx.OkJson(w, utils.SuccessResponse(resp, ""))
+			utils.HttpResult(r, w, resp, err)
 		}
 	}
 }

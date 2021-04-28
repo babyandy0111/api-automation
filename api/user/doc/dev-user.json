@@ -1,0 +1,226 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "使用者",
+    "description": "使用者相關微服務",
+    "version": ""
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/users/login": {
+      "post": {
+        "summary": "\"登入\"",
+        "operationId": "Login",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/LoginResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginRequest"
+            }
+          }
+        ],
+        "tags": [
+          "user-api"
+        ]
+      }
+    },
+    "/users/register": {
+      "post": {
+        "summary": "\"註冊\"",
+        "operationId": "Register",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RegisterResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegisterRequest"
+            }
+          }
+        ],
+        "tags": [
+          "user-api"
+        ]
+      }
+    },
+    "/users/userinfo": {
+      "post": {
+        "summary": "\"取使用者資料\"",
+        "operationId": "UserInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserinfoResponse"
+            }
+          }
+        },
+        "tags": [
+          "user-api"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "JwtToken": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "accessExpire": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "refreshAfter": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "JwtToken",
+      "required": [
+        "accessToken",
+        "accessExpire",
+        "refreshAfter"
+      ]
+    },
+    "LoginRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "title": "LoginRequest",
+      "required": [
+        "email",
+        "password"
+      ]
+    },
+    "LoginResponse": {
+      "type": "object",
+      "properties": {
+        "": {
+          "$ref": "#/definitions/UserReply"
+        }
+      },
+      "title": "LoginResponse"
+    },
+    "RegisterRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "title": "RegisterRequest",
+      "required": [
+        "username",
+        "email",
+        "password"
+      ]
+    },
+    "RegisterResponse": {
+      "type": "object",
+      "properties": {
+        "": {
+          "$ref": "#/definitions/UserReply"
+        }
+      },
+      "title": "RegisterResponse"
+    },
+    "UserReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "username": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "": {
+          "$ref": "#/definitions/JwtToken"
+        }
+      },
+      "title": "UserReply",
+      "required": [
+        "id",
+        "username",
+        "email"
+      ]
+    },
+    "UserinfoRequest": {
+      "type": "object",
+      "properties": {
+        "userid": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "title": "UserinfoRequest",
+      "required": [
+        "userid",
+        "token"
+      ]
+    },
+    "UserinfoResponse": {
+      "type": "object",
+      "properties": {
+        "": {
+          "$ref": "#/definitions/UserReply"
+        }
+      },
+      "title": "UserinfoResponse"
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "description": "Enter JWT Bearer token **_only_**",
+      "name": "Authorization",
+      "in": "header"
+    }
+  }
+}
