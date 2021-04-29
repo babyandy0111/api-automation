@@ -13,10 +13,6 @@ func UserInfoHandler(ctx *svc.ServiceContext) http.HandlerFunc {
 		userId := r.Header.Get("x-user-id")
 		l := logic.NewUserInfoLogic(r.Context(), ctx)
 		resp, err := l.UserInfo(userId)
-		if err != nil {
-			utils.ParamErrorResult(r, w, err)
-		} else {
-			utils.HttpResult(r, w, resp, err)
-		}
+		utils.HttpResult(r, w, resp, err)
 	}
 }

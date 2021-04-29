@@ -21,10 +21,6 @@ func LoginHandler(ctx *svc.ServiceContext) http.HandlerFunc {
 
 		l := logic.NewLoginLogic(r.Context(), ctx)
 		resp, err := l.Login(req)
-		if err != nil {
-			utils.ParamErrorResult(r, w, err)
-		} else {
-			utils.HttpResult(r, w, resp, err)
-		}
+		utils.HttpResult(r, w, resp, err)
 	}
 }

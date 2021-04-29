@@ -15,16 +15,12 @@ func GetUserPointHandler(ctx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var req types.GetUserPointRequest
 		if err := httpx.Parse(r, &req); err != nil {
-			httpx.Error(w, err)
+			utils.ParamErrorResult(r, w, err)
 			return
 		}
 
 		l := logic.NewGetUserPointLogic(r.Context(), ctx)
 		resp, err := l.GetUserPoint(req)
-		if err != nil {
-			utils.ParamErrorResult(r, w, err)
-		} else {
-			utils.HttpResult(r, w, resp, err)
-		}
+		utils.HttpResult(r, w, resp, err)
 	}
 }

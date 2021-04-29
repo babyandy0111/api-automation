@@ -29,6 +29,10 @@ func (l *GetUserPointLogic) GetUserPoint(req types.GetUserPointRequest) (*types.
 		UserID: req.UserId,
 	})
 
+	if resp == nil {
+		return &types.GetUserPointResponse{Point: 0}, nil
+	}
+
 	if err != nil {
 		return nil, err
 	}

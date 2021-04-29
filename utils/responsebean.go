@@ -5,7 +5,7 @@ type (
 
 	ResponseSuccessBean struct {
 		Code int         `json:"code"`
-		Msg  string      `json:"msg"`
+		Msg  string      `json:"message"`
 		Data interface{} `json:"data"`
 	}
 )
@@ -16,7 +16,7 @@ func Success(data interface{}) *ResponseSuccessBean {
 
 type ResponseErrorBean struct {
 	Code int    `json:"code"`
-	Msg  string `json:"msg"`
+	Msg  string `json:"message"`
 }
 
 func Error(errCode int, errMsg string) *ResponseErrorBean {
