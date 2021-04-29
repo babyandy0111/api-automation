@@ -11,20 +11,6 @@ import (
 	"net/http"
 )
 
-type HttpResponse struct {
-	Code    int         `json:"code"`
-	Message string      `json:"message"`
-	Result  interface{} `json:"result"`
-}
-
-func SuccessResponse(resData interface{}, message string) HttpResponse {
-	return HttpResponse{Code: 1, Message: message, Result: resData}
-}
-
-func FailureResponse(resData interface{}, message string, code int) HttpResponse {
-	return HttpResponse{Code: code, Message: message, Result: resData}
-}
-
 func PasswordEncrypt(salt, password string) string {
 	dk, _ := scrypt.Key([]byte(password), []byte(salt), 32768, 8, 1, 32)
 	return fmt.Sprintf("%x", string(dk))
@@ -49,7 +35,7 @@ func HttpResult(r *http.Request, w http.ResponseWriter, resp interface{}, err er
 	} else {
 		// 错误返回
 		errcode := BAD_REUQEST_ERROR
-		errmsg := "服务器繁忙，请稍后再试"
+		errmsg := message[BAD_REUQEST_ERROR]
 		if e, ok := err.(*CodeError); ok {
 			// 自定义CodeError
 			errcode = e.GetErrCode()
